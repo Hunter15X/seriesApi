@@ -61,13 +61,13 @@ module.exports = {
   async delete (req, res){
     const id = req.params.id
 
-    const retorno = seriesDao.delete(id)
+    const retorno = await seriesDao.delete(id)
 
     if(!retorno.affectedRows){
         return res.status(404).send({status: 'id não encontrado'})
     }
 
-     return res.status(200).send({message:"Serie deletada"})
+     return res.status(204).send({message:"Serie deletada"})
   }
 
 // ROTAS metódo antigo

@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './TabelaSeries.css'
+
 const TabelaHead = () => {
     return(
         <thead className="thead-dark">
@@ -21,45 +23,56 @@ const TabelaHead = () => {
     )
 }
 
-const TabelaBody = (props) => {
+const ListaSeries = (props) => {
+
     return (
-        <tbody>  
-            {props.lista.map(serie => {
+        <div className="card-body card-body-flex">
+            {props.series.map(serie => {
                 return (
-                <tr key={serie.id}>
-                    <th width="200px">
-                    {serie.nome}
-                    </th>
-                    <th width="200px">
-                    {serie.ano_de_lancamento}
-                    </th>
-                    <th width="200px">
-                    {serie.temporadas}
-                    </th>
-                    <th width="200px">
-                    {serie.sinopse}
-                    </th>
-                </tr>
+                    <div className="card card-serie" key={serie.id}>
+                        <div className="card-header">
+                            <h5 className="card-title">{serie.nome}</h5>
+                            <h6 className="card-title text-muted mb-1">{serie.ano_de_lancamento}</h6>
+                        </div>
+                    
+                        <div className="card-body">
+                            <img src="/serie.jpeg" className="card-img"/>
+                        </div>
+                        <div className="card-footer">
+                            {serie.temporadas}
+                            {serie.temporadas > 1 ? ' temporadas' : ' temporada'}
+                            <br />
+                            <a href="#">{'Sinopse: ' + serie.sinopse}</a>
+                            <br/>
+                            <button className="btn btn-outline-danger from-control mt-3 btn-sm" 
+                            onClick={() => {
+                                if (window.confirm('Deseja excluir?'))
+                                    props.deleta(serie.id)
+                            }}>Delete
+                            </button>
+                            <button className="btn btn-outline-warning from-control mt-3 ml-3 btn-sm">Editar</button>
+                        </div>   
+                    </div>
                 )
             })}
-    </tbody> 
+        </div>
     )
 }
 
 class TabelaSeries extends Component{
 
     render() {
+
+        const {series, deleta} = this.props
+
         return(
             <div className="card">
                 <div className="card-header">
-                    Lista de series
+                    <h5 className="text-center">Lista de series</h5>
                 </div>
-                <div className="card-body">
-                    <table className="table table-striped">
-                        <TabelaHead />
-                        <TabelaBody lista={this.props.lista} />
-                    </table>
-                </div>
+                
+                <ListaSeries series={series} deleta={deleta}/> 
+
             </div>
         )
     }

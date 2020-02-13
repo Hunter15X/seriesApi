@@ -1,0 +1,16 @@
+.card-serie{
+    max-width: 150px;
+    min-height: 150px;
+    margin: 5px;
+}
+
+.card-serie .card-footer{
+    padding: 5px;
+    font-size: 18px;
+}
+
+.card-body-flex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}

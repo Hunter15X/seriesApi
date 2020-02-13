@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import NavBar from './components/NavBar'
 import BoxSeries from './components/series/BoxSeries';
 
 class App extends Component{
@@ -10,11 +11,8 @@ class App extends Component{
     // console.log('render()')
     return (
       <div className="App">
-        <h1 className="text-center mt-3 mb-4">
-        Cadastro de Séries
-        </h1>  
+          <NavBar /> 
           <BoxSeries />
-
       </div>
     );
   }
