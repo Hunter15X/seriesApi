@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const TabelaHead = () => {
     return(
-        <thead>
+        <thead className="thead-dark">
             <tr>
                 <th width="200px">
                     Nome
@@ -50,9 +50,12 @@ class TabelaSeries extends Component{
 
     render() {
         return(
-            <div>
-                <div className="list">
-                    <table border="1" width="800px" height="200px">
+            <div className="card">
+                <div className="card-header">
+                    Lista de series
+                </div>
+                <div className="card-body">
+                    <table className="table table-striped">
                         <TabelaHead />
                         <TabelaBody lista={this.props.lista} />
                     </table>
