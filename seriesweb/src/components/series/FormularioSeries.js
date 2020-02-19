@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import PubSub from 'pubsub-js'
 
 
 class FormularioSeries extends Component{
@@ -7,12 +8,16 @@ class FormularioSeries extends Component{
         super()
         this.stateInitial = {
           nome: "",
-          lancamento: "",
+          ano_de_lancamento: "",
           temporadas: "",
           sinopse: ""
 
         }
         this.state = this.stateInitial
+
+        PubSub.subscribe('editing', (message, serie) => {
+          this.setState(serie)
+        })
       }
 
     inputHandler= (event) => {
@@ -42,7 +47,7 @@ class FormularioSeries extends Component{
                           <input type="text" id="nome" name="nome" onChange={this.inputHandler} value={this.state.nome} className="form-control"/>
 
                           <label htmlFor="nome">Ano de Lançamento</label>
-                          <input type="number" id="ano_lanc" name="lancamento"  onChange={this.inputHandler} value={this.state.lancamento} className="form-control" />
+                          <input type="number" id="ano_lanc" name="ano_de_lancamento"  onChange={this.inputHandler} value={this.state.ano_de_lancamento} className="form-control" />
 
                           <label htmlFor="nome">Temporadas</label>
                           <input type="number" id="temporada" name="temporadas"  onChange={this.inputHandler} value={this.state.temporadas} className="form-control"/>
