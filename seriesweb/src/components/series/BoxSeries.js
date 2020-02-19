@@ -45,7 +45,7 @@ class BoxSeries extends Component {
       }
 
       try{
-        const res = await fetch('http://localhost:3000/series/' + serie.id || '', params)
+        const res = await fetch(`http://localhost:3000/series/${serie.id || ''}`, params)
 
         if(res.status === 201){
           console.log('Enviado com sucesso')
