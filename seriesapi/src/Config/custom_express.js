@@ -7,6 +7,15 @@ const authConfig = require('./auth.json.js')
 
 const app = express();
 
+const auth = require('./routes/authRoutes')
+const series = require('/routes/seriesRoutes')
+
+app.use("/auth", auth)
+
+app.use(authMidd)
+
+app.use("series", series)
+
 const costumExpress = () => {
 
     app.use(bodyParser.json())

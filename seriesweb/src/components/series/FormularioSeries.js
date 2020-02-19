@@ -7,6 +7,7 @@ class FormularioSeries extends Component{
     constructor(){
         super()
         this.stateInitial = {
+          id: null,
           nome: "",
           ano_de_lancamento: "",
           temporadas: "",
@@ -30,6 +31,7 @@ class FormularioSeries extends Component{
         event.preventDefault()
         this.props.enviaDados(this.state);
         this.setState(this.stateInitial)
+        // console.log(event)
       }
 
     render(){

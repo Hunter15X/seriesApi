@@ -54,7 +54,7 @@ module.exports = {
         return
     }
 
-     return res.status(200).send({message:"Serie atualizada"})
+     return res.status(200).send({id, ...series})
 
   },
 

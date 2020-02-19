@@ -2,6 +2,8 @@ const express = require('express')
 const seriesRoutes = require('./routes/seriesRoutes')
 const auth = require('./routes/authRoutes')
 
+const authMidd = require('./middlewares/auth')
+
 const app = express()
 
 let allowCrossDomain = (req, res, next) => {
@@ -14,7 +16,10 @@ let allowCrossDomain = (req, res, next) => {
 app.use(express.json())
 app.use(allowCrossDomain)
 
-app.use('/auth', auth)
+app.use('/', auth)
+
+app.use(authMidd)
+
 app.use('/series', seriesRoutes)
 
 
